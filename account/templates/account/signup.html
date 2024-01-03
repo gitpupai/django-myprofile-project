@@ -1,0 +1,80 @@
+{% extends 'account/stylebase.html' %}
+
+{% block non-style-block %}
+
+{% if user.is_authenticated %}
+
+<p class="t-exp">You are already signed in, kindly logout to signin with different account<p>
+<a href="{% url 'account:homepage' %}">Back</a>
+
+{% else %}
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> SignUp Page </title>
+<style>
+Body {
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: pink;
+}
+button {
+       background-color: #29465B;
+       width: 100%;
+        color: orange;
+        padding: 15px;
+        margin: 10px 0px;
+        border: none;
+        cursor: pointer;
+         }
+
+ input[type=text], input[type=password] {
+        width: 100%;
+        margin: 8px 0;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 2px solid green;
+        box-sizing: border-box;
+    }
+ button:hover {
+        opacity: 0.7;
+    }
+
+ .container {
+   background-color: #dceb35;background-image:linear-gradient(#29465B,#00BFFF);
+   background-image:-webkit-linear-gradient(#dceb35,#00BFFF);
+   background-image:-moz-linear-gradient(#29465B,#00BFFF);
+   background-image:-ms-linear-gradiant(#29465B,#00BFFF);
+   background-image:-o-linear-gradient(#29465B,#00BFFF);
+   padding:50px 40px;
+   padding-bottom:20px;
+    }
+</style>
+</head>
+
+<body>
+
+  <form action="{% url 'account:signup' %}" method="POST">
+    {% csrf_token %}
+        <center> <h1 class="t-exp"> Sign Up </h1> </center>
+            <div class="container">
+                <label>Username : </label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <label>Password : </label>
+                <input type="password" placeholder="Enter Password" name="password1" required>
+                <label>Retype Password : </label>
+                <input type="password" placeholder="Enter Password again" name="password2" required>
+                <button type="submit">SignUp</button>
+            </div>
+  </form>
+{% if success == 1 %}
+<p class="t-exp">Account has been successfully created</p>
+{% elif success == 2 %}
+<p class="t-exp"> Password mismatch </p>
+{% elif success == 3 %}
+<p class="t-exp"> Username already exists </p>
+{% else %}
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

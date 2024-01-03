@@ -1,0 +1,78 @@
+{% extends 'account/basepage.html' %}
+{% block title %}Create {{module}} Page{% endblock title %}
+
+
+{% block updatemodule %}
+
+{% if user.is_authenticated %}
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+Body {
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: #000000;
+}
+button {
+       background-color: #29465B;
+       width: 100%;
+        color: orange;
+        padding: 15px;
+        margin: 10px 0px;
+        border: none;
+        cursor: pointer;
+         }
+
+ input[type=text], input[type=password] {
+        width: 100%;
+        margin: 8px 0;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 2px solid green;
+        box-sizing: border-box;
+    }
+ button:hover {
+        opacity: 0.7;
+    }
+
+
+ .container {
+   background-color: #dceb35;background-image:linear-gradient(#29465B,#00BFFF);
+   background-image:-webkit-linear-gradient(#dceb35,#00BFFF);
+   background-image:-moz-linear-gradient(#29465B,#00BFFF);
+   background-image:-ms-linear-gradiant(#29465B,#00BFFF);
+   background-image:-o-linear-gradient(#29465B,#00BFFF);
+   padding:50px 40px;
+   padding-bottom:20px;
+    }
+</style>
+</head>
+
+<body>
+
+<form class="signin-card" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <center> <h1 class="t-exp"> Create {{module}} </h1> </center>
+  <div class="container">
+  {{form.as_p}}
+  <button type="submit">Create</button>
+{% if success == 1 %}
+<p>{{module}} created successfully!!</p>
+{% elif success == 2 %}
+<p>{{module}} creation Failed!! </p>
+{% elif success == 3 %}
+<p>{{module}} already exists!! </p>
+{% endif %}
+</div>
+</form>
+{% else %}
+
+<p class="t-exp">You are not signed in!!<p>
+<p><a href="{% url 'account:homepage' %}">Back</a></p>
+
+{% endif %}
+
+</body>
+
+
+{% endblock %}

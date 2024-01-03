@@ -1,0 +1,134 @@
+{% extends 'account/stylebase.html' %}
+
+<!DOCTYPE html>
+{% load static %}
+{% block title %}Home{% endblock title %}
+<html lang="en">
+
+
+{% block non-style-block %}
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'account/images/9f0edadab7c44488a9c980da75d00c22.png' %}" width=70 height=50 />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'account:homepage' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'account:about' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'account:contact' %}">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            {% if profiles %}
+            <a class="nav-link" href="{% url 'resume:show_resume' profiles.id %}">See My Profile</a>
+            {% endif %}
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Update My Profile
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'resume:createcertificate' %}">Create Certificate</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:createaward' %}">Create Award</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:createcourse' %}">Create Course</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:createexperience' %}">Create Experience</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:createskill' %}">Create Skill</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:addcertificate' %}">Add Certificate</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:addaward' %}">Add Award</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:addcourse' %}">Add Course</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:addexperience' %}">Add Experience</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:addskill' %}">Add Skill</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:deletecertificate' %}">Delete Certificate</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:deleteaward' %}">Delete Award</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:deletecourse' %}">Delete Course</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:deleteexperience' %}">Delete Experience</a></li>
+              <li><a class="dropdown-item" href="{% url 'resume:deleteskill' %}">Delete Skill</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'resume:makeprofile' %}">Create/ Edit My Profile</a>
+          </li>
+        </ul>
+      </div>
+        <form class="d-flex" role="search" method="GET" action="{% url 'resume:searchprofile' %}">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchname" id="searchid"></input>
+          <button class="btn btn-outline-warning" type="submit" id="searchButton">Search</button>
+        </form>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <form method="POST" action="{% url 'resume:deleteprofile' %}">
+              {% csrf_token %}
+              {% if profiles %}
+              <button class="btn btn-outline-warning" name="deleteButton" id="deleteButton" type="submit">Delete Profile</button>
+              {% endif %}
+          </form>
+        </li>
+        <li class="nav-item mx-2">
+          <form method="POST" name="logoutButton" action="{% url 'account:homepage' %}">
+              {% csrf_token %}
+              <button class="btn btn-outline-warning" type="submit" name="logoutButton" id="logoutButton">Logout</button>
+          </form>
+        </li>
+      </ul>
+
+      {% else %}
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'account:homepage' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'account:about' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'account:contact' %}">Contact Us</a>
+          </li>
+        </ul>
+        </div>
+
+      <form class="d-flex" role="search" method="GET" action="{% url 'resume:searchprofile' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchname" id="searchid"></input>
+        <button class="btn btn-outline-warning" type="submit" id="searchButton">Search</button>
+      </form>
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <a href="{% url 'account:signin' %}" class="nav-link text-white">Login</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a href="{% url 'account:signup' %}" class="nav-link text-white">Sign Up</a>
+        </li>
+      </ul>
+
+      {% endif %}
+
+    </div>
+  </nav>
+
+  {% block banner-slider %}{% endblock banner-slider %}
+  {% block searchcontent %}{% endblock searchcontent %}
+  {% block updatemodule %}{% endblock updatemodule %}
+
+
+  <footer class="container-fl fixed-bottom text-center text-white p-2 mt-5">
+    Copyright : || Develop By Abhirup Poddar
+  </footer>
+
+</body>
+
+{% endblock %}
+
+</html>

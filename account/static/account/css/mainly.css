@@ -1,0 +1,160 @@
+.goodnessseccont img{
+  width:100%;
+}
+
+body{
+  background-color:#000000!important;
+}
+
+.text{
+  color:#dceb35!important;
+}
+
+
+#profile-pic-account{
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-left: 0px;
+}
+
+.top-left{
+  left: 150%;
+}
+
+
+ul{
+  padding: 0;
+  list-style-type: none;
+}
+
+
+#view-det{
+  right: 0px;
+}
+
+.card-body{
+  background-color:#D1D0CE!important;
+  border-width: thin;
+  border-color:#0C090A!important;
+}
+
+.card-head{
+  background-color:#DF1FD9;
+  border-width: thin;
+  border-color:#B6B239;
+}
+
+.cards{
+   display: flex;
+   justify-content:space-between;
+}
+
+
+.t-exp{
+  color:#dceb35!important;
+}
+
+.t-int{
+  color:#000000!important;
+}
+
+.t-bnr{
+  color:#000000!important;
+}
+
+.card-exp{
+  background-color: #dceb35;background-image:linear-gradient(#9D1BC7,#ec29bd);
+  background-image:-webkit-linear-gradient(#9D1BC7,#ec29bd);
+  background-image:-moz-linear-gradient(#00BFFF,#ec29bd);
+  background-image:-ms-linear-gradiant(#00BFFF,#ec29bd);
+  background-image:-o-linear-gradient(#00BFFF,#ec29bd);
+  padding:10px 10px;
+  border:1px solid #efe8e1;
+  padding-bottom:5px;
+}
+
+.card-int{
+  background-color: #ec5829;background-image:linear-gradient(#DFCB1F,#e289cd);
+  background-image:-webkit-linear-gradient(#DFCB1F,#e289cd);
+  background-image:-moz-linear-gradient(#00BFFF,#e289cd);
+  background-image:-ms-linear-gradiant(#00BFFF,#e289cd);
+  background-image:-o-linear-gradient(#00BFFF,#e289cd);
+  padding:10px 10px;
+  border:1px solid #efe8e1;
+  padding-bottom:5px;
+}
+
+.card-bnr{
+  background-color: #1BC726;background-image:linear-gradient(#29465B,#00BFFF);
+  background-image:-webkit-linear-gradient(#dceb35,#00BFFF);
+  background-image:-moz-linear-gradient(#29465B,#00BFFF);
+  background-image:-ms-linear-gradiant(#29465B,#00BFFF);
+  background-image:-o-linear-gradient(#29465B,#00BFFF);
+  padding:10px 10px;
+  border:1px solid #efe8e1;
+  padding-bottom:5px;
+}
+
+
+.card-pic{
+  background-color: #2F539A;background-image:linear-gradient(#29465B,#00BFFF);
+  background-image:-webkit-linear-gradient(#29465B,#00BFFF);
+  background-image:-moz-linear-gradient(#29465B,#00BFFF);
+  background-image:-ms-linear-gradiant(#29465B,#00BFFF);
+  background-image:-o-linear-gradient(#29465B,#00BFFF);
+  padding:50px 40px;
+  border:1px solid #efe8e1;
+  padding-bottom:20px;
+}
+
+.card-body{
+  background-color: #dceb35;background-image:linear-gradient(#29465B,#00BFFF);
+  background-image:-webkit-linear-gradient(#dceb35,#00BFFF);
+  background-image:-moz-linear-gradient(#29465B,#00BFFF);
+  background-image:-ms-linear-gradiant(#29465B,#00BFFF);
+  background-image:-o-linear-gradient(#29465B,#00BFFF);
+  padding:50px 40px;
+  border:1px solid #efe8e1;
+  padding-bottom:20px;
+}
+/*
+.carousel-inner {
+  display: flex;
+  justify-content:space-around;
+} */
+
+/* .card-body-car {
+  display: flex;
+  justify-content:space-around;
+}
+
+.img-fluid {
+  display: flex;
+  justify-content:space-around;
+} */
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+.email-tag{
+  color:#000000!important
+}
+
+
+.drop-message{
+  color:#000000!important;
+}
+
+.navbar{
+  /* background-color: #000000; */
+  background-color: #dceb35;background-image:linear-gradient(#29465B,#00BFFF);
+}
+
+.container-fl{
+  background-color: #29465B;
+}

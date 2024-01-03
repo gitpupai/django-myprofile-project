@@ -1,0 +1,53 @@
+{% extends 'account/basepage.html' %}
+{% block title %}Search results{% endblock title %}
+
+<!DOCTYPE html>
+{% load static %}
+
+{% block searchcontent %}
+
+<html lang="en">
+
+<body>
+
+{% if search_profiles|length == 0 %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-body">
+      <h1>No Profiles Found</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-head">
+        <h4>Search Results:</h4>
+      </div>
+      {% for profile in search_profiles %}
+      <div class="card-body">
+
+        <form class="view-det" action="{% url 'resume:show_resume' profile.id %}" method="GET">
+        <p align="right"><button class="view-det" type="/search">View Details</button></p>
+        </form>
+        <img id="profile-pic-account" src="{{ profile.dp.url }}"  height=200 width=132>
+        <br>
+        <h4>{{profile.first_name}} {{profile.last_name}}</h4>
+        <p>{{profile.email}}</p>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+</body>
+
+{% endblock %}
